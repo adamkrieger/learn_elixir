@@ -3,8 +3,8 @@
 # 2015-07-04
 
 defmodule SelfPowers do
-  def solve(lower..upper) when lower >= upper do
-    lower |> _self_power
+  def solve(n..n) do
+    n |> _self_power
   end
 
   def solve(lower..upper) do
