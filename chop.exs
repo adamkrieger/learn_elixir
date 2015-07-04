@@ -5,8 +5,10 @@
 
 defmodule Chop do
 
-  def guess(answer, guess \\ 500, range)
-  
+  def guess(answer, lower..upper) do
+    guess(answer, mid(lower..upper), lower..upper)
+  end
+
   def guess(answer, guess, lower..upper) when guess == answer do
     IO.puts "It is #{to_string(guess)}!!!"
   end
