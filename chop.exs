@@ -6,26 +6,26 @@
 defmodule Chop do
 
   def guess(answer, lower..upper) do
-    guess(answer, mid(lower..upper), lower..upper)
+    _guess(answer, _mid(lower..upper), lower..upper)
   end
 
-  def guess(answer, guess, _lower.._upper) when guess == answer do
+  defp _guess(answer, guess, _lower.._upper) when guess == answer do
     IO.puts "It is #{to_string(guess)}!!!"
   end
 
-  def guess(answer, guess, _lower..upper) when guess < answer do
+  defp _guess(answer, guess, _lower..upper) when guess < answer do
     IO.puts "Greater than #{to_string(guess)}"
-    new_guess = mid(guess..upper)
-    guess(answer, new_guess, guess..upper)
+    new_guess = _mid(guess..upper)
+    _guess(answer, new_guess, guess..upper)
   end
 
-  def guess(answer, guess, lower.._upper) when guess > answer do
+  defp _guess(answer, guess, lower.._upper) when guess > answer do
     IO.puts "Less than #{to_string(guess)}"
-    new_guess = mid(lower..guess)
-    guess(answer, new_guess, lower..guess)
+    new_guess = _mid(lower..guess)
+    _guess(answer, new_guess, lower..guess)
   end
 
-  defp mid(lower..upper) do
+  defp _mid(lower..upper) do
     lower + div((upper-lower), 2)
   end
 end
